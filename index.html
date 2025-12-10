@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{$toptitle}</title>
+    <meta name="description" content="{$description}" />
+    <meta name="keywords" content="{$keywords}" />
+    <meta charset="UTF-8">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="{$style_path}/zb_users/theme/blog/style/css.css" />
+    <script src="{$style_path}/zb_users/theme/blog/js/she.js"></script>
+    <link rel="canonical" href="{$thisurl}">
+</head>
+<body>
+{include file="header.html"}
+<div class="clear"></div>
+
+<div class="main">
+    <div class="top2 mulutop2">
+        <div class="mianleft">
+            <div class="clear"></div>
+            
+            <!-- 文章列表 -->
+            <main role="main">
+                {loop type="arclist" row=10}
+                <article class="content" itemscope itemtype="http://schema.org/Article">
+                    <div class="contop">
+                        <div class="contopleft">
+                            <div class="conttitle">
+                                <a href="{$vo.url}" itemprop="url">
+                                    <h2 itemprop="headline">{$vo.title}</h2>
+                                </a>
+                            </div>
+                            <div class="condes" itemprop="description">{$vo.info}...</div>
+                        </div>
+                        <div class="contentright">
+                            <a href="{$vo.url}"><img src="{$vo.pic}" alt="{$vo.title}" itemprop="image"></a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="contdow">
+                        <div class="fbtime mulutime" itemprop="datePublished">
+                            <span class="timebj"></span>{$vo.postdate}
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </article>
+                {/loop}
+            </main>
+            
+            <!-- 分页 -->
+            <nav class="fanye" aria-label="文章分页">
+                {loop type="tag" row=10}
+                    <li><a href="{$vo.url}">{$vo.i}</a></li>    
+                {/loop}
+            </nav>
+        </div>
+        
+        <!-- 侧边栏 -->
+        <aside class="mainright" role="complementary">
+            <div class="bzjianjie">
+                <div class="hot1">最新文章</div>
+                {loop type="arclist" row=10}
+                <div class="hotcont">
+                    <div class="hotph">
+                        <div class="hotphtitle"><a href="{$vo.url}">{$vo.title}</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                {/loop}
+                {loop type="hulian" row=10}
+                <div class="hotcont">
+                    <div class="hotph">
+                        <div class="hotphtitle"><a href="{$vo.url}">{$vo.title}</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                {/loop}
+                {loop type="link"}
+                <div class="hotcont">
+                    <div class="hotph">
+                        <div class="hotphtitle"><a href="{$vo.url}">{$vo.title}</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                {/loop}
+            </div>
+        </aside>
+    </div>
+
+    <div class="clear"></div>
+    {include file="footer.html"}
+</div>
+</body>
+</html>
